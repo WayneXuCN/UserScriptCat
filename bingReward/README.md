@@ -1,13 +1,11 @@
-# Microsoft Rewards 自动签到脚本 - 代码结构详解 (v1.0.0)
+# Microsoft Rewards 自动签到脚本
 
 ## 一、脚本概述
 
-这是一个油猴（Tampermonkey/Greasemonkey）脚本，用于自动完成 Microsoft Rewards（微软积分商城）的每日任务。
-
-**注意**：阅读和活动任务已在 Microsoft Rewards 最新版本中移除，当前版本仅支持以下任务：
+这是一个油猴（Tampermonkey/ScriptCat）脚本，用于自动完成 Microsoft Rewards（微软积分商城）的每日任务。
 
 - ✅ 移动设备签到（Sign-in）- 需要 OAuth Token
-- ✅ Bing 搜索任务（PC + 移动端搜索）
+- ✅ Bing 搜索任务
 
 ## 二、架构设计
 
@@ -15,8 +13,8 @@
 
 ```
 TaskRunner (基类)
-    ├── SignTask    (移动设备签到任务)
-    └── SearchTask  (Bing 搜索任务)
+    ├── SignTask
+    └── SearchTask
 
 TaskState (状态管理类，由各任务类持有)
 ```
@@ -151,7 +149,7 @@ class TaskRunner {
 #### SearchTask (Bing 搜索任务)
 
 - 管理搜索词列表（支持热搜 API 或随机汉字）
-- PC/移动端搜索智能切换
+- 仅支持 PC 端搜索（Microsoft Rewards 已移除移动端搜索任务）
 - 上报搜索活动到 Rewards 系统
 - 支持配置搜索间隔时间
 
@@ -282,7 +280,7 @@ context = {
 **说明：**
 
 - **移动设备签到**：需要配置 `OAuth.code` 才能执行，完成后可获得移动设备积分
-- **Bing 搜索**：自动在 PC 端和移动端模式间切换，完成每日搜索积分任务
+- **Bing 搜索**：自动完成 PC 端搜索任务，获取每日搜索积分
 - 建议保持两个任务都开启以获得最大积分收益
 
 ### 6.3 OAuth 配置

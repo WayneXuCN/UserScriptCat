@@ -1,0 +1,18 @@
+{
+  "name": "tampermonkescripts",
+  "version": "1.0.0",
+  "description": "浏览器自动化脚本集合，基于 [ScriptCat](https://scriptcat.org/) 开发。",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "eslint": "^10.0.3",
+    "eslint-plugin-userscripts": "^0.5.6"
+  }
+}
